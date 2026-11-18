@@ -1,0 +1,161 @@
+:root {
+  --bg: #f4ecdc;
+  --ink: #2f2a22;
+  --muted: #7a7062;
+  --card: #fffdf7;
+  --line: rgba(47, 42, 34, 0.12);
+  --accent: #4fae68;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --ink: #ece8df;
+    --muted: #9a958b;
+    --card: #222528;
+    --line: rgba(236, 232, 223, 0.14);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.wrap {
+  width: min(960px, 100% - 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 0;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--line);
+  cursor: pointer;
+}
+
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.icon-btn .wave {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.icon-btn .off,
+.icon-btn[aria-pressed="true"] .on { display: none; }
+.icon-btn[aria-pressed="true"] .off { display: block; }
+
+.stage {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 14px 34px -14px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+}
+
+.touch {
+  display: none;
+  gap: 12px;
+}
+
+.pad {
+  flex: 1;
+  height: 64px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--card);
+  color: var(--ink);
+  font: 600 1.1rem system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  box-shadow: inset 0 0 0 1px var(--line);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.pad.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: none;
+}
+
+.help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+kbd {
+  font: inherit;
+  font-size: 0.85em;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.help.taps { display: none; }
+
+@media (pointer: coarse) {
+  .touch { display: flex; }
+  .help.keys { display: none; }
+  .help.taps { display: block; }
+}
+
+/* Phones held sideways: keep everything on one screen */
+@media (max-height: 500px) {
+  .wrap { gap: 8px; padding: 8px 0; }
+  h1 { font-size: 1.15rem; }
+  .icon-btn { width: 34px; height: 34px; }
+  .pad { height: 48px; }
+  .help { display: none !important; }
+}

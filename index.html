@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4ecdc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16181a" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Dino Jump: an endless runner. Jump the rocks, duck the bugs, beat your best.">
+  <title>Dino Jump</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap" id="wrap">
+    <header class="top">
+      <h1>Dino Jump</h1>
+      <button id="mute" class="icon-btn" type="button" aria-pressed="false" aria-label="Mute sound">
+        <svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/></svg>
+        <svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wave" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+      </button>
+    </header>
+
+    <div class="stage" id="stage">
+      <canvas id="game" role="img" aria-label="Dino Jump game"></canvas>
+    </div>
+
+    <div class="touch" id="touch">
+      <button id="btn-jump" class="pad" type="button">Jump</button>
+      <button id="btn-duck" class="pad" type="button">Duck</button>
+    </div>
+
+    <p class="help keys"><kbd>Space</kbd> or <kbd>↑</kbd> jump (hold for higher) · <kbd>↓</kbd> duck · <kbd>P</kbd> pause</p>
+    <p class="help taps">Tap the game or Jump · hold Duck to crouch</p>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
